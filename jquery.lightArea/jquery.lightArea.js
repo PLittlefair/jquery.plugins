@@ -33,12 +33,12 @@ options : either an options object or true if you want to remove the lightarea
 			//CREATE A DIV AND GIVE IT STYLE/CLASS
 			div = $("<div />", {
 				css : divCSS,
-				"class" : ops.divClass
+				"class" : ops.divClass + " lightAreaFix"
 			}),
 			//CREATE SPAN IF ops.spanTexT IS TRUE OTHERWISE USE EMPTY STRING
 			span = $("<span />", {
 				css : spanCSS,
-				"class" : ops.spanClass,
+				"class" : ops.spanClass + " lightAreaFix",
 				text : ops.spanText
 			});
 		
@@ -106,7 +106,7 @@ options : either an options object or true if you want to remove the lightarea
 			//IF REMOVING LIGHTAREA
 			}else{
 				id =  this.id;
-				$("div." + ops.spanClass + ", span." + ops.divClass).each(function(){
+				$("div.lightAreaFix, span.lightAreaFix").each(function(){
 					var $$this = $(this);
 					if($$this.data("lightAreaID") === id){
 						$$this.remove();
