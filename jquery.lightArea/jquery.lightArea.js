@@ -9,6 +9,21 @@
 * ------------------------------------------------------- 
 OPTIONS:
 options : either an options object or true if you want to remove the lightarea
+	backgroundColor : "#000",				//BACKGROUND COLOUR OF THE COVERING DIV
+	fadeIn : "fast",						//SPEED TO FADE IN THE COVERING DIV
+	opacity : "0.3",						//OPACITY OF THE COVERING DIV
+	spanShow : false,						//SHOW A SPAN IN THE TOP LEFT CORNER
+	spanText : "",							//TEXT TO SHOW IN THE SPAN
+	spanClass : "lightArea",				//CLASS GIVEN TO THE SPAN
+	spanCSS : {padding:"5px",				//DEFAULT CSS FOR THE SPAN
+				border:"1px solid #000",
+				background:"#fff",
+				fontWeight:"bold",
+				fontSize:"14px",
+				color:"#000",
+				"z-index":1001},
+	divClass : "lightArea",					//CLASS GIVEN TO THE COVERING DIV
+	divCSS : {"z-index":1000}				//DEFAULT CSS FOR THE COVERING DIV
 */
 (function($){
 	$.fn.lightArea = function(options){

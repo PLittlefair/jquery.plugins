@@ -1,0 +1,11 @@
+/** 
+* lightArea - a jQuery plugin for creating a lightbox over a certain element on the page
+* Copyright (c) 2012 Paul Littlefair
+* ------------------------------------------------------- 
+* Dual licensed under the MIT and GPL licenses. 
+*    - http://www.opensource.org/licenses/mit-license.php 
+*    - http://www.gnu.org/copyleft/gpl.html 
+* ------------------------------------------------------- 
+* ------------------------------------------------------- 
+*/
+(function(b){b.fn.lightArea=function(i){var a=b.isPlainObject(i)?i:{},a=b.extend(!0,{},b.fn.lightArea.defaults,a),e=b.browser.msie&&8>=+b.browser.version?100*a.opacity:a.opacity,j=b.extend({},a.spanCSS,{display:"none",position:"absolute"}),e=b.extend({},a.divCSS,{display:"none",background:a.backgroundColor,opacity:e,filter:"alpha(opacity="+e+")",position:"absolute"}),k=b("<div />",{css:e,"class":a.divClass+" lightAreaFix"}),l=b("<span />",{css:j,"class":a.spanClass+" lightAreaFix",text:a.spanText}); b(window).resize(function(){b("div."+a.spanClass+", span."+a.divClass).each(function(){var a=b.data(this,"lightAreaID"),c=b(this),a=b("#"+a),f=a.offset();c.css({top:f.top,left:f.left});"div"===this.nodeName.toLowerCase()&&c.width(a.outerWidth()).height(a.outerHeight())})});return this.each(function(){var d,c=this.id,f=b(this);if(!0!==i){var h=k.clone(),g="",e=f.offset();c?d=c.split("lightArea-")[1]||c:(d=+new Date+Math.floor(1E6*Math.random()),c=this.id="lightArea-"+d);h.attr("id","lightAreaDiv-"+ d);h.data("lightAreaID",c);a.spanShow&&(g=l.clone(),g.attr("id","lightAreaSpan-"+d),g.data("lightAreaID",c));f.data("lightAreaID",d);b(h).width(f.outerWidth()).height(f.outerHeight()).add(g).css({top:e.top,left:e.left});b("body").append(h,g);b(h).add(g).fadeIn(a.fadeIn)}else d=this.id,b("div.lightAreaFix, span.lightAreaFix").each(function(){var a=b(this);a.data("lightAreaID")===d&&a.remove()})})};b.fn.lightArea.defaults={backgroundColor:"#000",fadeIn:"fast",opacity:"0.3",spanShow:!1,spanText:"",spanClass:"lightArea", spanCSS:{padding:"5px",border:"1px solid #000",background:"#fff",fontWeight:"bold",fontSize:"14px",color:"#000","z-index":1001},divClass:"lightArea",divCSS:{"z-index":1E3}}})(window.jQuery);
