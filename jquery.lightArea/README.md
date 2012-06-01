@@ -1,12 +1,14 @@
 jquery.lightArea
 ================
 
-Adds a lightbox type cover to any element on the pages
+Adds a lightbox type cover to any element on the page
 
 /* BASIC */
+
 $(".someElement").lightArea();
 
 /* WITH OPTIONS */
+
 $(".someOtherElement").lightArea({
 	backgroundColor : "#bada55",
 	fadeIn : "slow",
