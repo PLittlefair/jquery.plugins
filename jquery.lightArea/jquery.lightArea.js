@@ -119,11 +119,11 @@ options : either an options object or true if you want to remove the lightarea
 		backgroundColor : "#000",
 		fadeIn : "fast",
 		opacity : "0.3",
-		spanShow : true,
-		spanText : "LOADING...",
-		spanClass : "ost-loading",
+		spanShow : false,
+		spanText : "",
+		spanClass : "lightArea",
 		spanCSS : {padding:"5px",border:"1px solid #000",background:"#fff",fontWeight:"bold",fontSize:"14px",color:"#000","z-index":1001},
-		divClass : "ost-loading",
+		divClass : "lightArea",
 		divCSS : {"z-index":1000}
 	};
 }(window.jQuery));
