@@ -78,13 +78,12 @@ options : either an options object or true if you want to remove the lightarea
 		
 		//LOOP THROUGH EACH ITEM
 		return this.each(function(){
-			var id,
-				eleID = this.id,
-				$this = $(this);
-			
+			var eleID = this.id;
 			//IF ADDING THE LIGHTAREA
 			if(options !== true){
-				var divClone = div.clone(),
+				var id,
+					$this = $(this);
+					divClone = div.clone(),
 					spanClone = "",				
 					//GET THE POSITION OF THE ELEMENT TO COVER RELATIVE TO DOCUMENT
 					thisOffset = $this.offset();
@@ -110,23 +109,30 @@ options : either an options object or true if you want to remove the lightarea
 				}
 				$this.data("lightAreaID", id);
 				
-				//SET HEIGHT AND WIDTH OF LIGHTAREA
+				//SET STYLES OF LIGHTAREA DIV AND SPAN
 				$(divClone)
-					.width($this.outerWidth())
-					.height($this.outerHeight())
-				.add(spanClone)
-					.css({"top":thisOffset.top,"left":thisOffset.left});
-					
+					.css({
+						"width" : $this.outerWidth(),
+						"height" : $this.outerHeight(), 
+						"top" : thisOffset.top,
+						"left" : thisOffset.left,
+						"borderTopLeftRadius" : $this.css("borderTopLeftRadius"),
+						"borderTopRightRadius" : $this.css("borderTopRightRadius"),
+						"borderBottomLeftRadius" : $this.css("borderBottomLeftRadius"),
+						"borderBottomRightRadius" : $this.css("borderBottomRightRadius")
+					});
+				$(spanClone)
+					.css({"top":thisOffset.top + ops.spanCSS.top,"left":thisOffset.left + ops.spanCSS.left});
+				
 				//ADD DIV AND SPAN TO DOCUMENT AND FADE IN
 				$("body").append(divClone, spanClone);
 				$(divClone).add(spanClone).fadeIn(ops.fadeIn);
 				
 			//IF REMOVING LIGHTAREA
 			}else{
-				id =  this.id;
 				$("div.lightAreaFix, span.lightAreaFix").each(function(){
 					var $$this = $(this);
-					if($$this.data("lightAreaID") === id){
+					if($$this.data("lightAreaID") === eleID){
 						$$this.remove();
 					}
 				});
@@ -141,7 +147,7 @@ options : either an options object or true if you want to remove the lightarea
 		spanShow : false,
 		spanText : "",
 		spanClass : "lightArea",
-		spanCSS : {padding:"5px",border:"1px solid #000",background:"#fff",fontWeight:"bold",fontSize:"14px",color:"#000","z-index":1001},
+		spanCSS : {padding:"5px",top:0,left:0,border:"1px solid #000",background:"#fff",fontWeight:"bold",fontSize:"14px",color:"#000","z-index":1001},
 		divClass : "lightArea",
 		divCSS : {"z-index":1000}
 	};
