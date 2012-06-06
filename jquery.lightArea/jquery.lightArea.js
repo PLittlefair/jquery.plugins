@@ -57,21 +57,24 @@ options : either an options object or true if you want to remove the lightarea
 				text : ops.spanText
 			});
 		
-		//MAKE SURE THE DIV RESIZES WITH BROWSER WINDOW
-		$(window).resize(function(){
-			$("div." + ops.spanClass + ", span." + ops.divClass).each(function(){
-				var id = $.data(this, "lightAreaID"),
-					$this = $(this),
-					$holder = $("#" + id),
-					thisOffset = $holder.offset();
-				$this.css({"top":thisOffset.top,"left":thisOffset.left});
-				if(this.nodeName.toLowerCase() === "div"){
-					$this
-						.width($holder.outerWidth())
-						.height($holder.outerHeight());
-				}
+		//ONLY SET WINDOW RESIZE EVENT HANDLER THE FIRST TIME THE PLUGIN IS RUN
+		if(!$.fn.lightArea.resizeSet && ($.fn.lightArea.resizeSet = true)){
+			//MAKE SURE THE DIV RESIZES WITH BROWSER WINDOW
+			$(window).resize(function(){
+				$("div." + ops.spanClass + ", span." + ops.divClass).each(function(){
+					var id = $.data(this, "lightAreaID"),
+						$this = $(this),
+						$holder = $("#" + id),
+						thisOffset = $holder.offset();
+					$this.css({"top":thisOffset.top,"left":thisOffset.left});
+					if(this.nodeName.toLowerCase() === "div"){
+						$this
+							.width($holder.outerWidth())
+							.height($holder.outerHeight());
+					}
+				});
 			});
-		});
+		}
 		
 		//LOOP THROUGH EACH ITEM
 		return this.each(function(){
@@ -130,6 +133,7 @@ options : either an options object or true if you want to remove the lightarea
 			}
 		});
 	};
+	$.fn.lightArea.resizeSet = false;
 	$.fn.lightArea.defaults = {
 		backgroundColor : "#000",
 		fadeIn : "fast",
