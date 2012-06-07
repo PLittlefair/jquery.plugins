@@ -122,8 +122,7 @@ options : either an options object or true if you want to remove the lightarea
 						"borderBottomRightRadius" : $this.css("borderBottomRightRadius")
 					});
 				$(spanClone)
-					.css({"top":thisOffset.top + ops.spanCSS.top,"left":thisOffset.left + ops.spanCSS.left});
-				
+					.css({"top":+thisOffset.top + +ops.spanCSS.top,"left":+thisOffset.left + +ops.spanCSS.left});
 				//ADD DIV AND SPAN TO DOCUMENT AND FADE IN
 				$("body").append(divClone, spanClone);
 				$(divClone).add(spanClone).fadeIn(ops.fadeIn);
