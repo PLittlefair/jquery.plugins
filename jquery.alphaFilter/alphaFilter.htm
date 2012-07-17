@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>jquery.alphaFilter</title>
+	<style type="text/css" media="screen">
+		body{font:normal 1em Arial;}
+		.alphalist{
+			border:1px solid #aaa;
+			border-radius: 3px;
+			padding:0;
+			margin: 0;
+			width:90%;
+			text-align: center
+		}
+		.alphalist li{
+			padding:.5em;
+			display:inline-block;
+			font-size: 0.9em;
+		}
+		dt{font-weight: bold}
+	</style>
+</head>
+<body>
+<p>A quick example of alphaFilter</p>
+<dl class="list">
+	<dt>ar</dt>
+	<dd>Archiver</dd>
+	<dt>as</dt>
+	<dd>Assembler</dd>
+	<dt>atob</dt>
+	<dd>ASCII to Binary</dd>
+	<dt>bash</dt>
+	<dd>Bourne again shell</dd>
+	<dt>bsh</dt>
+	<dd>Bourne SHell</dd>
+	<dt>chgrp</dt>
+	<dd>Change Group</dd>
+	<dt>chmod</dt>
+	<dd>Change Mode</dd>
+	<dt>cp</dt>
+	<dd>Copy</dd>
+	<dt>egrep</dt>
+	<dd>Extended Grep</dd>
+	<dt>fmt</dt>
+	<dd>Format</dd>
+	<dt>mkfs</dt>
+	<dd>Make file system</dd>
+	<dt>passwd</dt>
+	<dd>Password</dd>
+	<dt>pcc</dt>
+	<dd>Portable C Complier</dd>
+	<dt>sh</dt>
+	<dd>Shell</dd>
+	<dt>su</dt>
+	<dd>Super User</dd>
+	<dt>vi</dt>
+	<dd>Visual</dd>
+	<dt>vim</dt>
+	<dd>vi Improved</dd>
+	<dt>zip</dt>
+	<dd>Ziv packer</dd>
+</dl>
+<pre>&lt;script>$(".list").alphaFilter();&lt;/script></pre>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="jquery.alphaFilter.js"></script>
+<script>
+$(".list").alphaFilter();
+</script>
+</body>
+</html>
