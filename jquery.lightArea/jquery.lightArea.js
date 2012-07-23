@@ -30,8 +30,7 @@ options : either an options object or true if you want to remove the lightarea
 		//MERGE OPTIONS WITH DEFAULTS
 		var ops = $.isPlainObject(options) ? options : {};
 		ops = $.extend(true, {},$.fn.lightArea.defaults, ops);
-		//CHECK IF BROWSER IS IE AND LESS THAN 9, IF IT IS CHANGE OPACITY UNITS TO TENS
-		var opacity = $.browser.msie && +$.browser.version <=8 ? ops.opacity * 100 : ops.opacity,
+		var opacity = ops.opacity,
 			//MAKE SURE spanCSS HAS POSITION SET
 			spanCSS = $.extend({}, ops.spanCSS, {
 				display:"none",
@@ -42,7 +41,7 @@ options : either an options object or true if you want to remove the lightarea
 				display:"none",
 				background:ops.backgroundColor,
 				"opacity":opacity,
-				filter:"alpha(opacity=" + opacity + ")",
+				filter:"alpha(opacity=" + (opacity * 100) + ")",
 				position:"absolute"
 			}),
 			//CREATE A DIV AND GIVE IT STYLE/CLASS
