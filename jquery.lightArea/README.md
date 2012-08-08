@@ -19,4 +19,8 @@ $(".someOtherElement").lightArea({
 	spanCSS : {padding:40px, border-radius:5px},
 	divClass : "lightDiv",
 	divCSS : {border:"5px solid #f00"}
-})
+});
+
+/* REMOVE LIGHTAREA */
+
+$(".someElement").lightArea(true);
