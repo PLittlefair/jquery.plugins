@@ -60,7 +60,7 @@ options : either an options object or true if you want to remove the lightarea
 		if(!$.fn.lightArea.resizeSet && ($.fn.lightArea.resizeSet = true)){
 			//MAKE SURE THE DIV RESIZES WITH BROWSER WINDOW
 			$(window).resize(function(){
-				$("div." + ops.spanClass + ", span." + ops.divClass).each(function(){
+				$(".lightAreaFix").each(function(){
 					var id = $.data(this, "lightAreaID"),
 						$this = $(this),
 						$holder = $("#" + id),
