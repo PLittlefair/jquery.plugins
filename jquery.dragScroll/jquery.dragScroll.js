@@ -7,10 +7,6 @@
 * - http://www.opensource.org/licenses/mit-license.php
 * - http://www.gnu.org/copyleft/gpl.html
 * -------------------------------------------------------
-* -------------------------------------------------------
-OPTIONS:
-scrollWheel : Boolean. IF THE SCROLL WHEELS SHOULD SCROLL THE CONTAINER
-scrollWheelJump : Number. NUMBER OF PIXELS TO MOVE THE CONTAINER UP OR DOWN WHEN MOUSE WHEEL IS USED
 */
 (function($){
 	/*

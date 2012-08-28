@@ -1,4 +1,4 @@
-/** 
+/*
 * alphaFilter - a jQuery plugin for creating an alphabetical contents list which filters
 * Copyright (c) 2010 Paul Littlefair
 * ------------------------------------------------------- 

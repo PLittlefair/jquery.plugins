@@ -1,4 +1,4 @@
-/** 
+/*
 * alphaFilter - a jQuery plugin for creating an alphabetical contents list which filters
 * Copyright (c) 2010 Paul Littlefair
 * ------------------------------------------------------- 
@@ -6,10 +6,6 @@
 *    - http://www.opensource.org/licenses/mit-license.php 
 *    - http://www.gnu.org/copyleft/gpl.html 
 * ------------------------------------------------------- 
-* ------------------------------------------------------- 
-OPTIONS
-listClass : Class to add to the list of letters
-columnIndex : Index of the column to search when looking through a table
 */
 (function($){
 	$.fn.alphaFilter = function(options){
