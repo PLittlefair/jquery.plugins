@@ -31,10 +31,11 @@
 		* @returns {Object}
 		*/
 		function getCoords($elem){
-			var leftPos = parseInt($elem.css("left"),10),
-			topPos = parseInt($elem.css("top"),10),
-			rightPos = leftPos + $elem.outerWidth(),
-			bottomPos = topPos + $elem.outerHeight();
+			var offset = $elem.offset(),
+				leftPos = offset.left,
+				topPos = offset.top,
+				rightPos = leftPos + $elem.outerWidth(),
+				bottomPos = topPos + $elem.outerHeight();
 
 			return{
 				left : leftPos,
