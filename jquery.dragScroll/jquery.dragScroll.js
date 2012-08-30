@@ -84,10 +84,10 @@
 						var currentY = getMousePosition(e, drag_container, coords.top);
 						//IF THE CURRENT MOUSE POS IS LESS THAN START POS (MOUSE MOVING UP/PAGE DOWN) ADD THE DIFFERENCE TO THE SCROlLTOP
 						if(currentY < startY){
-							drag_container.scrollTop = drag_container.scrollTop + (startY - currentY);
+							drag_container.scrollTop += (startY - currentY);
 							//IF THE CURRENT MOUSE POS IS GREATER THAM START POS (MOUSE MOVING DOWN/PAGE UP) MINUS THE DIFFERENCE FROM THE SCROlLTOP
 						}else{
-							drag_container.scrollTop = drag_container.scrollTop - (currentY - startY);
+							drag_container.scrollTop -= (currentY - startY);
 						}
 					}
 				});
@@ -96,10 +96,10 @@
 				$holder.bind("mousewheel", function(e){
 					//IF THE MOUSE WHEEL IS GOING UP MINUS FROM SCROLLTOP
 					if(e.wheelDelta / 120 > 0){
-						drag_container.scrollTop = drag_container.scrollTop - options.scrollWheelJump;
+						drag_container.scrollTop -= options.scrollWheelJump;
 					//IF THE MOUSE WHEEL IS GOING DOWN ADD TO SCROLLTOP
 					}else{
-						drag_container.scrollTop = drag_container.scrollTop + options.scrollWheelJump;
+						drag_container.scrollTop += options.scrollWheelJump;
 					}
 				});
 			}
