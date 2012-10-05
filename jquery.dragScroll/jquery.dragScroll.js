@@ -66,7 +66,13 @@
 			//WRAP THE ELEMENT IN A DIV SO USING THE SCROLL BAR DOESN'T TRIGGER MOUSEDOWN/MOUSEUP
 			$drag_container.wrapInner('<div id="dragScrollInner-' + uid + '" />')
 			//STOP TEXT BEING SELECTED
-				.css({"-moz-user-select":"-moz-none","-khtml-user-select":"none","-webkit-user-select":"none","-ms-user-select":"none","user-select":"none"});
+				.css({
+					"-moz-user-select":"-moz-none",
+					"-khtml-user-select":"none",
+					"-webkit-user-select":"none",
+					"-ms-user-select":"none",
+					"user-select":"none"
+				});
 
 			//ADD EVENT HANDLERS TO INNER DIV
 			$holder = $("#dragScrollInner-" + uid)
