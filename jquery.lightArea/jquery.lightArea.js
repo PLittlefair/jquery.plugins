@@ -1,12 +1,12 @@
-/** 
+/**
 * lightArea - a jQuery plugin for creating a lightbox over a certain element on the page
 * Copyright (c) 2012 Paul Littlefair
-* ------------------------------------------------------- 
-* Dual licensed under the MIT and GPL licenses. 
-*    - http://www.opensource.org/licenses/mit-license.php 
-*    - http://www.gnu.org/copyleft/gpl.html 
-* ------------------------------------------------------- 
-* ------------------------------------------------------- 
+* -------------------------------------------------------
+* Dual licensed under the MIT and GPL licenses.
+*    - http://www.opensource.org/licenses/mit-license.php
+*    - http://www.gnu.org/copyleft/gpl.html
+* -------------------------------------------------------
+* -------------------------------------------------------
 OPTIONS:
 options : either an options object or true if you want to remove the lightarea
 	backgroundColor : "#000",				//BACKGROUND COLOUR OF THE COVERING DIV
@@ -55,7 +55,8 @@ options : either an options object or true if you want to remove the lightarea
 				"class" : ops.spanClass + " lightAreaFix",
 				text : ops.spanText
 			});
-		
+			ops.spanHTML && span.html(ops.spanHTML);
+
 		//ONLY SET WINDOW RESIZE EVENT HANDLER THE FIRST TIME THE PLUGIN IS RUN
 		if(!$.fn.lightArea.resizeSet && ($.fn.lightArea.resizeSet = true)){
 			//MAKE SURE THE DIV RESIZES WITH BROWSER WINDOW
@@ -74,19 +75,19 @@ options : either an options object or true if you want to remove the lightarea
 				});
 			});
 		}
-		
+
 		//LOOP THROUGH EACH ITEM
 		return this.each(function(){
 			var eleID = this.id;
 			//IF ADDING THE LIGHTAREA
 			if(options !== true){
 				var id,
-					$this = $(this);
+					$this = $(this),
 					divClone = div.clone(),
-					spanClone = "",				
+					spanClone = "",
 					//GET THE POSITION OF THE ELEMENT TO COVER RELATIVE TO DOCUMENT
 					thisOffset = $this.offset();
-				
+
 				//GIVE THE ELEMENT THAT IS BEING COVERED AN ID IF IT HASN'T GOT ONE
 				if(!eleID){
 					//CREATE A RANDOM ID FOR THE LIGHTAREA AND ATTACH TO DATA OBJECT
@@ -96,10 +97,10 @@ options : either an options object or true if you want to remove the lightarea
 				}else{
 					id = (eleID).split("lightArea-")[1] || eleID;
 				}
-				
+
 				divClone.attr("id", "lightAreaDiv-" + id);
 				divClone.data("lightAreaID", eleID);
-				
+
 				//ONLY SHOW THE SPAN IF spanShow IS TRUE
 				if(ops.spanShow){
 					spanClone = span.clone();
@@ -107,12 +108,12 @@ options : either an options object or true if you want to remove the lightarea
 					spanClone.data("lightAreaID", eleID);
 				}
 				$this.data("lightAreaID", id);
-				
+
 				//SET STYLES OF LIGHTAREA DIV AND SPAN
 				$(divClone)
 					.css({
 						"width" : $this.outerWidth(),
-						"height" : $this.outerHeight(), 
+						"height" : $this.outerHeight(),
 						"top" : thisOffset.top,
 						"left" : thisOffset.left,
 						"borderTopLeftRadius" : $this.css("borderTopLeftRadius"),
@@ -121,11 +122,14 @@ options : either an options object or true if you want to remove the lightarea
 						"borderBottomRightRadius" : $this.css("borderBottomRightRadius")
 					});
 				$(spanClone)
-					.css({"top":+thisOffset.top + +ops.spanCSS.top,"left":+thisOffset.left + +ops.spanCSS.left});
+					.css({
+						"top":+thisOffset.top + (+ops.spanCSS.top) + "px",
+						"left":+thisOffset.left + (+ops.spanCSS.left) + "px"
+					});
 				//ADD DIV AND SPAN TO DOCUMENT AND FADE IN
 				$("body").append(divClone, spanClone);
 				$(divClone).add(spanClone).fadeIn(ops.fadeIn);
-				
+
 			//IF REMOVING LIGHTAREA
 			}else{
 				$("div.lightAreaFix, span.lightAreaFix").each(function(){
@@ -145,8 +149,8 @@ options : either an options object or true if you want to remove the lightarea
 		spanShow : false,
 		spanText : "",
 		spanClass : "lightArea",
-		spanCSS : {padding:"5px",top:0,left:0,border:"1px solid #000",background:"#fff",fontWeight:"bold",fontSize:"14px",color:"#000","z-index":1001},
+		spanCSS : {"zIndex":1001},
 		divClass : "lightArea",
-		divCSS : {"z-index":1000}
+		divCSS : {"zIndex":1000}
 	};
 }(window.jQuery));

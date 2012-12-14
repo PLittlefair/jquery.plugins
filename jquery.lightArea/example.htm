@@ -47,7 +47,7 @@
 <div id="rectangle">CLICK ME</div>
 <button id="btn-remove">Remove All LightAreas</button>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script src="jquery.lightArea-min.js"></script>
+<script src="jquery.lightArea.js"></script>
 <script>
 (function($){
 	var els = $("#circle, #square").on("click", function(){
@@ -59,10 +59,11 @@
 		$(this).lightArea({
 					opacity : 0.2,
 					fadeIn : "slow",
-					backgroundColor : "#00f", 
+					backgroundColor : "#00f",
 					spanShow : true,
-					spanText : "Hi, I'm a span!!",
-					spanCSS : {top:"50", left:"50", boxShadow:"6px 6px 10px"}
+					// spanText : "Hi, I'm a span!!",
+					spanHTML : "<b>SOMETHING IN BOLD</b> and something not<br>SOMTHING ON ANOTHER LINE",
+					spanCSS : {top:"10", left:"10", boxShadow:"6px 6px 10px", backgroundColor:"#fff"}
 		});
 	});
 	//REMOVE ALL lightAreas
