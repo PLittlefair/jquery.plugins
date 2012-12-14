@@ -14,16 +14,11 @@ options : either an options object or true if you want to remove the lightarea
 	opacity : "0.3",						//OPACITY OF THE COVERING DIV
 	spanShow : false,						//SHOW A SPAN IN THE TOP LEFT CORNER
 	spanText : "",							//TEXT TO SHOW IN THE SPAN
+	spanHTML : "",							//HTML TO SHOW IN THE SPAN (OVERIDES spanText)
 	spanClass : "lightArea",				//CLASS GIVEN TO THE SPAN
-	spanCSS : {padding:"5px",				//DEFAULT CSS FOR THE SPAN
-				border:"1px solid #000",
-				background:"#fff",
-				fontWeight:"bold",
-				fontSize:"14px",
-				color:"#000",
-				"z-index":1001},
+	spanCSS : {"zIndex":1001},				//DEFAULT CSS FOR THE SPAN
 	divClass : "lightArea",					//CLASS GIVEN TO THE COVERING DIV
-	divCSS : {"z-index":1000}				//DEFAULT CSS FOR THE COVERING DIV
+	divCSS : {"zIndex":1000}				//DEFAULT CSS FOR THE COVERING DIV
 */
 (function($){
 	$.fn.lightArea = function(options){
@@ -123,8 +118,8 @@ options : either an options object or true if you want to remove the lightarea
 					});
 				$(spanClone)
 					.css({
-						"top":+thisOffset.top + (+ops.spanCSS.top) + "px",
-						"left":+thisOffset.left + (+ops.spanCSS.left) + "px"
+						"top":+thisOffset.top + (+ops.spanCSS.top || "") + "px",
+						"left":+thisOffset.left + (+ops.spanCSS.left || "") + "px"
 					});
 				//ADD DIV AND SPAN TO DOCUMENT AND FADE IN
 				$("body").append(divClone, spanClone);
@@ -148,6 +143,7 @@ options : either an options object or true if you want to remove the lightarea
 		opacity : "0.3",
 		spanShow : false,
 		spanText : "",
+		spanHTML : "",
 		spanClass : "lightArea",
 		spanCSS : {"zIndex":1001},
 		divClass : "lightArea",
