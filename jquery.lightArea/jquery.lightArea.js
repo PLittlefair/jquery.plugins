@@ -40,17 +40,17 @@ options : either an options object or true if you want to remove the lightarea
 				position:"absolute"
 			}),
 			//CREATE A DIV AND GIVE IT STYLE/CLASS
-			div = $("<div />", {
+			$div = $("<div />", {
 				css : divCSS,
 				"class" : ops.divClass + " lightAreaFix"
 			}),
-			//CREATE SPAN IF ops.spanTexT IS TRUE OTHERWISE USE EMPTY STRING
-			span = $("<span />", {
+			//CREATE SPAN AND GIVE IT STYLE/CLASS AND TEXT
+			$span = $("<span />", {
 				css : spanCSS,
 				"class" : ops.spanClass + " lightAreaFix",
 				text : ops.spanText
 			});
-			ops.spanHTML && span.html(ops.spanHTML);
+			ops.spanHTML && $span.html(ops.spanHTML);
 
 		//ONLY SET WINDOW RESIZE EVENT HANDLER THE FIRST TIME THE PLUGIN IS RUN
 		if(!$.fn.lightArea.resizeSet && ($.fn.lightArea.resizeSet = true)){
@@ -78,8 +78,8 @@ options : either an options object or true if you want to remove the lightarea
 			if(options !== true){
 				var id,
 					$this = $(this),
-					divClone = div.clone(),
-					spanClone = "",
+					$divClone = $div.clone(),
+					$spanClone = "",
 					//GET THE POSITION OF THE ELEMENT TO COVER RELATIVE TO DOCUMENT
 					thisOffset = $this.offset();
 
@@ -93,19 +93,24 @@ options : either an options object or true if you want to remove the lightarea
 					id = (eleID).split("lightArea-")[1] || eleID;
 				}
 
-				divClone.attr("id", "lightAreaDiv-" + id);
-				divClone.data("lightAreaID", eleID);
-
 				//ONLY SHOW THE SPAN IF spanShow IS TRUE
 				if(ops.spanShow){
-					spanClone = span.clone();
-					spanClone.attr("id", "lightAreaSpan-" + id);
-					spanClone.data("lightAreaID", eleID);
+					$spanClone = $span.clone();
+					//SET ID, DATA AND STYLES OF LIGHTAREA SPAN
+					$spanClone
+						.attr("id", "lightAreaSpan-" + id)
+						.data("lightAreaID", eleID)
+						.css({
+							"top":+thisOffset.top + (+ops.spanCSS.top || "") + "px",
+							"left":+thisOffset.left + (+ops.spanCSS.left || "") + "px"
+						});
 				}
 				$this.data("lightAreaID", id);
 
-				//SET STYLES OF LIGHTAREA DIV AND SPAN
-				$(divClone)
+				//SET ID, DATA AND STYLES OF LIGHTAREA DIV
+				$divClone
+					.attr("id", "lightAreaDiv-" + id)
+					.data("lightAreaID", eleID)
 					.css({
 						"width" : $this.outerWidth(),
 						"height" : $this.outerHeight(),
@@ -116,14 +121,9 @@ options : either an options object or true if you want to remove the lightarea
 						"borderBottomLeftRadius" : $this.css("borderBottomLeftRadius"),
 						"borderBottomRightRadius" : $this.css("borderBottomRightRadius")
 					});
-				$(spanClone)
-					.css({
-						"top":+thisOffset.top + (+ops.spanCSS.top || "") + "px",
-						"left":+thisOffset.left + (+ops.spanCSS.left || "") + "px"
-					});
 				//ADD DIV AND SPAN TO DOCUMENT AND FADE IN
-				$("body").append(divClone, spanClone);
-				$(divClone).add(spanClone).fadeIn(ops.fadeIn);
+				$("body").append($divClone, $spanClone);
+				$divClone.add($spanClone).fadeIn(ops.fadeIn);
 
 			//IF REMOVING LIGHTAREA
 			}else{
