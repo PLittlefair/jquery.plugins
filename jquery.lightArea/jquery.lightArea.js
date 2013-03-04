@@ -2,9 +2,8 @@
 * lightArea - a jQuery plugin for creating a lightbox over a certain element on the page
 * Copyright (c) 2012 Paul Littlefair
 * -------------------------------------------------------
-* Dual licensed under the MIT and GPL licenses.
+* Licensed under the MIT licenses.
 *    - http://www.opensource.org/licenses/mit-license.php
-*    - http://www.gnu.org/copyleft/gpl.html
 * -------------------------------------------------------
 * -------------------------------------------------------
 OPTIONS:
@@ -48,6 +47,9 @@ options : either an options object or true if you want to remove the lightarea
 			$span = $("<span />", {
 				css : spanCSS,
 				"class" : ops.spanClass + " lightAreaFix",
+				"role" : "dialog",
+				"aria-label" : ops.spanLabel,
+				"tabindex" : -1,
 				text : ops.spanText
 			});
 			ops.spanHTML && $span.html(ops.spanHTML);
@@ -144,6 +146,7 @@ options : either an options object or true if you want to remove the lightarea
 		spanShow : false,
 		spanText : "",
 		spanHTML : "",
+		spanLabel : "Light Area",
 		spanClass : "lightArea",
 		spanCSS : {"zIndex":1001},
 		divClass : "lightArea",
